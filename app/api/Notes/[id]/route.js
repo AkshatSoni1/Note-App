@@ -13,6 +13,6 @@ export async function PUT(request, {params}){
 export async function GET(request, {params}){
     const {id} = params;
     await connectToMongoDB();
-    const topic = await Notes.findOne({ _id: id});
-    return NextResponse.json({ topic }, { status:200 });
+    const note = await Notes.findOne({ _id: id});
+    return NextResponse.json({ note }, { status:200 });
 }

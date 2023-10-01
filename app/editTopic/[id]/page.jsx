@@ -1,21 +1,29 @@
-import React from 'react'
+import EditForm from "@/components/EditForm";
 
-const page = () => {
+const getNoteById = async(id) =>{
+  try {
+    const res = await fetch(`http://localhost:3000/api/Notes/${id}`,{
+      cache: "no-store",
+    });
+
+    if(!res.ok){
+      throw new Error("Failed to fetch note");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+const page = async({params}) => {
+
+  const {id} = params;
+  const {note} = await getNoteById(id);
+  const {title, description} = note;
+
   return (
-    <form className='flex flex-col gap-5 mx-2'>
-    <input
-        type='text'
-        className='border text-xl border-slate-500 px-5 py-2 mt-8 rounded-md'
-        placeholder='Title'
-    />
-    <textarea
-        type='text'
-        className='border text-xl border-slate-500 px-5 py-3 rounded-md'
-        placeholder='Write the description here...' 
-        rows="4"
-    />
-    <button className='bg-green-600 font-bold px-6 py-3 mt-3 w-fit text-white rounded-md text-lg'>Update Note</button>
-</form>
+    <EditForm id={id} title={title} description={description}/>
   )
 }
 
