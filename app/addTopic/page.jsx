@@ -18,7 +18,7 @@ const page = () => {
         }
 
         try {
-            const res = await fetch("http://localhost:3000/api/Notes",{
+            const res = await fetch(`${process.env.PROJECT_URL}/api/Notes`,{
                 method: "POST",
                 headers: {
                     "Content-type": "application/json",

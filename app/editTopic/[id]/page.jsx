@@ -2,7 +2,7 @@ import EditForm from "@/components/EditForm";
 
 const getNoteById = async(id) =>{
   try {
-    const res = await fetch(`http://localhost:3000/api/Notes/${id}`,{
+    const res = await fetch(`${process.env.PROJECT_URL}/api/Notes/${id}`,{
       cache: "no-store",
     });
 

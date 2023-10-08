@@ -5,7 +5,7 @@ import { HiPencilAlt } from 'react-icons/hi'
 
 const getNotes = async() =>{
   try {
-    const res = await fetch("http://localhost:3000/api/Notes", {
+    const res = await fetch(`${process.env.PROJECT_URL}/api/Notes`, {
       cache:"no-store"
     });
     if(!res.ok){

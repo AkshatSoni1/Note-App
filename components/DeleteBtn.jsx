@@ -9,7 +9,7 @@ function DeleteBtn({id}) {
     const confirmed = confirm("Are you sure want to delete this note?");
 
     if(confirmed){
-      const res = await fetch(`http://localhost:3000/api/Notes?id=${id}`,{
+      const res = await fetch(`${process.env.PROJECT_URL}/api/Notes?id=${id}`,{
         method: "DELETE",
       });
       if(res.ok){
